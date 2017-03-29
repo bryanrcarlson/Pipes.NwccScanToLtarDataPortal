@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <RootNamespace>Nsar.Pipes.NwccScanToLtarDataPortal</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.ValueTuple" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\UnitOfMeasure\Common.UnitOfMeasure.csproj" />
+    <ProjectReference Include="..\..\Nodes\LtarDataPortal\MetWriter\Nodes.LtarDataPortal.MetWriter.csproj" />
+    <ProjectReference Include="..\..\Nodes\NwccScan\ReportFormat\Nodes.NwccScan.ReportFormat.csproj" />
+    <ProjectReference Include="..\..\Nodes\NwccScan\ReportGenerator\Nodes.NwccScan.ReportGenerator.csproj" />
+    <ProjectReference Include="..\..\Common\UnitOfMeasure\Common.UnitOfMeasure.csproj" />
+    <ProjectReference Include="..\..\Nodes\LtarDataPortal\MetWriter\Nodes.LtarDataPortal.MetWriter.csproj" />
+    <ProjectReference Include="..\..\Nodes\NwccScan\Core\Nodes.NwccScan.Core.csproj" />
+    <ProjectReference Include="..\..\Nodes\NwccScan\ReportFormat.Tests\Nodes.NwccScan.ReportFormat.Tests.csproj" />
+    <ProjectReference Include="..\..\Nodes\NwccScan\ReportFormat\Nodes.NwccScan.ReportFormat.csproj" />
+    <ProjectReference Include="..\..\Nodes\NwccScan\ReportGenerator\Nodes.NwccScan.ReportGenerator.csproj" />
+  </ItemGroup>
+
+</Project>
