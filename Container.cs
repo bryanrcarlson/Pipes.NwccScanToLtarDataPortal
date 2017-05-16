@@ -14,7 +14,7 @@ namespace Nsar.Pipes.NwccScanToLtarDataPortal
         {
             var r = new Nsar.Nodes.NwccScan.ReportGenerator.ReportRetriever();
             var f = new Nsar.Nodes.NwccScan.ReportFormat.Formatter();
-            var w = new Nsar.Nodes.LtarDataPortal.Meteorology.Load.CsvWriter(@"C:\");
+            var w = new Nsar.Nodes.LtarDataPortal.Meteorology.Load.FileSystemCsvWriter(@"C:\");
             var t = new Nsar.Nodes.LtarDataPortal.Meteorology.Transform.TransformTemporalMeasurement();
             var p = new CommandLineParser();
 

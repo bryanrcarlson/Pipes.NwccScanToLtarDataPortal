@@ -14,14 +14,14 @@ namespace Nsar.Pipes.NwccScanToLtarDataPortal
     {
         private readonly ReportRetriever grabber;
         private readonly Formatter formatter;
-        private readonly CsvWriter writer;
+        private readonly ILoadMeteorology writer;
         private readonly TransformTemporalMeasurement transformer;
         private readonly CommandLineParser commandLineParser;
 
         public Engine(
             ReportRetriever dataGrabber,
             Formatter formatter,
-            CsvWriter writer,
+            ILoadMeteorology writer,
             TransformTemporalMeasurement transformer,
             CommandLineParser commandLineParser)
         {
@@ -54,14 +54,10 @@ namespace Nsar.Pipes.NwccScanToLtarDataPortal
             // Single responsibility principle says I should have a "connection" class
             //and a "read" class.  But I'm putting them together here.
 
-            //DateTime today = DateTime.Today;
-            //today = new DateTime(2016, 9, 1);
             string content =
                 grabber.GetHourly(
                     "2198:WA:SCAN",
-                    //new DateTime(2013, 07, 24),
                     dateStart,
-                    //new DateTime(2016, 09, 11),
                     dateEnd,
                     columns);
 
@@ -76,9 +72,6 @@ namespace Nsar.Pipes.NwccScanToLtarDataPortal
                 measurements);
 
             writer.Load(data);
-
-            // SOLID be damned, this class connects to filesystem and writes to it
-            //COReWriter.W
         }
     }
 }
