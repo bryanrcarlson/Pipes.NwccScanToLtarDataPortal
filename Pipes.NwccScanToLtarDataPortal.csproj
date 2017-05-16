@@ -12,11 +12,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Common\UnitOfMeasure\Common.UnitOfMeasure.csproj" />
-    <ProjectReference Include="..\..\Nodes\LtarDataPortal\MetWriter\Nodes.LtarDataPortal.MetWriter.csproj" />
+    <ProjectReference Include="..\..\Nodes\LtarDataPortal\Meteorology\Nodes.LtarDataPortal.Meteorology.csproj" />
     <ProjectReference Include="..\..\Nodes\NwccScan\ReportFormat\Nodes.NwccScan.ReportFormat.csproj" />
     <ProjectReference Include="..\..\Nodes\NwccScan\ReportGenerator\Nodes.NwccScan.ReportGenerator.csproj" />
     <ProjectReference Include="..\..\Common\UnitOfMeasure\Common.UnitOfMeasure.csproj" />
-    <ProjectReference Include="..\..\Nodes\LtarDataPortal\MetWriter\Nodes.LtarDataPortal.MetWriter.csproj" />
     <ProjectReference Include="..\..\Nodes\NwccScan\Core\Nodes.NwccScan.Core.csproj" />
     <ProjectReference Include="..\..\Nodes\NwccScan\ReportFormat.Tests\Nodes.NwccScan.ReportFormat.Tests.csproj" />
     <ProjectReference Include="..\..\Nodes\NwccScan\ReportFormat\Nodes.NwccScan.ReportFormat.csproj" />

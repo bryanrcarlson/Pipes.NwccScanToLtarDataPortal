@@ -1,11 +1,12 @@
-﻿using MetWriter;
-using Nsar.Common.UnitOfMeasure;
-using Nsar.Nodes.CORe.MetWriter;
+﻿using Nsar.Common.UnitOfMeasure;
+using Nsar.Nodes.LtarDataPortal.Meteorology.Core;
+using Nsar.Nodes.LtarDataPortal.Meteorology.Dto;
+using Nsar.Nodes.LtarDataPortal.Meteorology.Load;
+using Nsar.Nodes.LtarDataPortal.Meteorology.Transform;
 using Nsar.Nodes.NwccScan.ReportFormat;
 using Nsar.Nodes.NwccScan.ReportGenerator;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Nsar.Pipes.NwccScanToLtarDataPortal
 {
@@ -14,17 +15,20 @@ namespace Nsar.Pipes.NwccScanToLtarDataPortal
         private readonly ReportRetriever grabber;
         private readonly Formatter formatter;
         private readonly CsvWriter writer;
+        private readonly TransformTemporalMeasurement transformer;
         private readonly CommandLineParser commandLineParser;
 
         public Engine(
             ReportRetriever dataGrabber,
             Formatter formatter,
             CsvWriter writer,
+            TransformTemporalMeasurement transformer,
             CommandLineParser commandLineParser)
         {
             this.grabber = dataGrabber;
             this.formatter = formatter;
             this.writer = writer;
+            this.transformer = transformer;
             this.commandLineParser = commandLineParser;
         }
 
@@ -61,16 +65,17 @@ namespace Nsar.Pipes.NwccScanToLtarDataPortal
                     dateEnd,
                     columns);
 
-            List<ITemperalMeasurement> measurements = formatter.ParseData(content);
+            List<ITemporalMeasurement> measurements = formatter.ParseData(content);
 
-            writer.CreateDataRecord(
+            List<COReDataRecord> data = new List<COReDataRecord>();
+            data = transformer.Transform(
                 LtarSiteAcronymCodes.CookAgronomyFarm,
                 "002",
                 RecordTypeCodes.LegacySiteSpecificDefinition,
                 -8,
                 measurements);
 
-            writer.Write();
+            writer.Load(data);
 
             // SOLID be damned, this class connects to filesystem and writes to it
             //COReWriter.W
